@@ -1,24 +1,35 @@
-var Thread = require('../models/thread.js');
-var Post = require('../models/post.js');
- 
-exports.post = function(req, res) {
-    console.log(JSON.stringify(req.body));
-    res.send(req.body);
-    new Thread({title: req.body.title, author: req.body.author}).save();
-}
- 
-exports.list = function(req, res) {
-  Thread.find(function(err, threads) {
-    res.send(threads);
-  });
-}
- 
-// first locates a thread by title, then locates the replies by thread ID.
-exports.show = (function(req, res) {
-    Thread.findOne({title: req.params.title}, function(error, thread) {
-        if(error || !thread) res.send([]);
-        var posts = Post.find({thread: thread._id}, function(error, posts) {
-          res.send([{thread: thread, posts: posts}]);
+var User = require('../models/user.js'),
+    mail = require('./mail.js');
+
+exports.userCreate = function(req, res){
+    req.body.email = req.body.email.toLowerCase();
+    User.count({ email: req.body.email }, function(err, count){
+        if(count > 0) res.send(400, { errors: { email: { message: 'A user with that email address already exists' }}});
+        var user = new User({
+            email: req.body.email,
+            password: User.hashPassword(req.body.password),
+            apiKey: User.generateApiKey()
         });
-    })
-});
+        user.save(function(err, doc){
+            if(err) {
+                res.send(400, { errors: err.errors }); 
+                return;
+            }
+            mail.sendWelcomeEmail(doc._id);
+            res.send(200, doc);
+        });        
+    });
+}
+
+exports.userAuth = function(req, res){
+    var errors = {};
+    if(!req.body.email) errors.email = { message: 'You must enter an email address' };
+    if(!req.body.password) errors.password = { message: 'You must enter a password' };
+    if(errors.email || errors.password) res.send({ errors: errors });
+    User.findOne({ email: req.body.email.toLowerCase() }, function(err, doc){
+        if(err) res.send(500);
+        else if(!doc) res.send(401, { errors: { user: { message: 'User not found' }}});
+        else if(doc.password == User.hashPassword(req.body.password)) res.send(doc);
+        else res.send(401, { errors: { user: { message: 'Please check your email and password are correct' }}});
+    });
+}
