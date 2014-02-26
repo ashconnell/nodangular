@@ -32,7 +32,7 @@ The Frontend stack uses [Jade](http://jade-lang.com/) and [Sass](http://sass-lan
 - `grunt`  
   Runs the build task and then watches files. When jade/sass/scripts change, it builds them. Also livereloads the browser when css changes
 
-- `nodemon app.js` or `node app`  
+- `nodemon server.js` or `node server`  
   Nodemon will restart server when server files change. If you prefer not to use it, just run default `node app`
 
 ## Setup (Production)
@@ -43,7 +43,7 @@ The Frontend stack uses [Jade](http://jade-lang.com/) and [Sass](http://sass-lan
 - `grunt --production`  
   Builds the project and exits
 
-- `forever app.js` or `node app.js`  
+- `forever server.js` or `node server.js`  
   Starts the node server. Forever is a utility that will restart your node server when it crashes or the machine reboots
 
 ## Working with Scripts
