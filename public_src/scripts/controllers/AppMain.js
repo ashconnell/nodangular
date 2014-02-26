@@ -1,4 +1,3 @@
-app.controller('AppMain', function($rootScope, $scope){
-    console.log('loaded App.Main controller');
-    $rootScope.$broadcast('updateTitle', 'lol');
+app.controller('AppMain', function($scope, Utils){
+    Utils.updateTitle('Main');
 });
