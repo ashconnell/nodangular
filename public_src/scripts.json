@@ -7,7 +7,6 @@
     "scripts/vendor/angular-touch/angular-touch.js",
     "scripts/vendor/angular-ui-router/release/angular-ui-router.js",
     "scripts/app.js",
-    "scripts/routes.js",
     "scripts/controllers/Login.js",
     "scripts/controllers/App.js",
     "scripts/controllers/AppMain.js"

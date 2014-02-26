@@ -78,7 +78,7 @@ module.exports = function(grunt) {
         },
 
         copy: {
-            dev: {
+            scripts: {
                 files: [{
                     expand: true,
                     cwd: 'public_src/scripts',
@@ -101,13 +101,6 @@ module.exports = function(grunt) {
             }
         }
     });
-
-    // grunt.event.on('watch', function(action, filepath) {
-    //     grunt.config('copy.dev.files', [{
-    //         src: filepath,
-    //         dest: filepath.replace('public_src', 'public_build')
-    //     }]);
-    // });
 
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-sass');
