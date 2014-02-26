@@ -10,7 +10,14 @@ module.exports = function(grunt) {
     }
 
     grunt.initConfig({
-        clean: ['public_build'],
+        clean: {
+            all: {
+                src: ['public_build']
+            },
+            scripts: {
+                src: ['public_build/scripts']
+            }
+        },
 
         watch: {
             styles: {
@@ -23,7 +30,7 @@ module.exports = function(grunt) {
             },
             scripts: {
                 files: ['public_src/**/*.js'],
-                tasks: ['copy'],
+                tasks: ['clean:scripts', 'copy'],
                 options: {
                     spawn: false
                 }
@@ -95,12 +102,12 @@ module.exports = function(grunt) {
         }
     });
 
-    grunt.event.on('watch', function(action, filepath) {
-        grunt.config('copy.dev.files', [{
-            src: filepath,
-            dest: filepath.replace('public_src', 'public_build')
-        }]);
-    });
+    // grunt.event.on('watch', function(action, filepath) {
+    //     grunt.config('copy.dev.files', [{
+    //         src: filepath,
+    //         dest: filepath.replace('public_src', 'public_build')
+    //     }]);
+    // });
 
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-sass');
@@ -111,9 +118,9 @@ module.exports = function(grunt) {
 
     var tasks;
     if(production) 
-        tasks = ['clean', 'sass', 'jade', 'uglify'];
+        tasks = ['clean:all', 'sass', 'jade', 'uglify'];
     else
-        tasks = ['clean', 'sass', 'jade', 'copy', 'watch']; 
+        tasks = ['clean:all', 'sass', 'jade', 'copy', 'watch']; 
 
     grunt.registerTask('default', tasks);
 };
