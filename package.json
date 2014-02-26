@@ -1,0 +1,29 @@
+{
+  "name": "nodangular",
+  "version": "0.1.0",
+  "author": "Ash Connell <contact@ashconnell.com>",
+  "description": "A bare bones all-in-one boilerplate for creating Web Applications for desktop and mobile.",
+  "scripts": {},
+  "dependencies": {
+    "express": ">=3.4.8",
+    "mongoose": ">=3.8.5",
+    "node-uuid": ">=1.4.1",
+    "nodemailer": ">=0.6.0",
+    "socket.io": ">=0.9.16"
+  },
+  "devDependencies": {
+    "bower": ">=1.2.8",
+    "grunt": "~0.4.2",
+    "grunt-contrib-jade": "~0.10.0",
+    "grunt-contrib-uglify": "~0.3.2",
+    "grunt-contrib-sass": "~0.7.2",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-contrib-clean": "~0.5.0",
+    "grunt-contrib-copy": "~0.5.0"
+  },
+  "bundledDependencies": [],
+  "license": "MIT",
+  "engines": {
+    "node": ">=0.10.7"
+  }
+}
