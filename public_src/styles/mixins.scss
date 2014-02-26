@@ -1,0 +1,56 @@
+@mixin border-radius($radius){
+    -webkit-border-radius:$radius;
+    -moz-border-radius:$radius;
+    -ms-border-radius:$radius;
+    border-radius:$radius;
+}
+@mixin border-radiuses($tl, $tr, $br, $bl){ 
+    -webkit-border-top-left-radius:$tl;
+    -webkit-border-top-right-radius:$tr;
+    -webkit-border-bottom-right-radius:$br;
+    -webkit-border-bottom-left-radius:$bl;
+    -moz-border-top-left-radius:$tl;
+    -moz-border-top-right-radius:$tr;
+    -moz-border-bottom-right-radius:$br;
+    -moz-border-bottom-left-radius:$bl;
+    -ms-border-top-left-radius:$tl;
+    -ms-border-top-right-radius:$tr;
+    -ms-border-bottom-right-radius:$br;
+    -ms-border-bottom-left-radius:$bl;
+    border-top-left-radius:$tl;
+    border-top-right-radius:$tr;
+    border-bottom-right-radius:$br;
+    border-bottom-left-radius:$bl;
+}
+@mixin border-box {
+    -webkit-box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    -ms-box-sizing:border-box;
+    box-sizing:border-box;
+}
+@mixin transition($params...){
+    -webkit-transition: $params;
+    -moz-transition: $params;
+    -ms-transition: $params;
+    transition: $params;
+}
+@mixin transform($params){
+    -webkit-transform: $params;
+    -moz-transform: $params;
+    -ms-transform: $params;
+    transform: $params;
+}
+@mixin box-shadow($params){
+    -webkit-box-shadow: $params;
+    -moz-box-shadow: $params;
+    -ms-box-shadow: $params;
+    box-shadow: $params;
+}
+@mixin no-selection {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
