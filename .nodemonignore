@@ -2,3 +2,4 @@ public_src/*
 public_build/*
 Gruntfile.js
 bower_components/*
+.git/*

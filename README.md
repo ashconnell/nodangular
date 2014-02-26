@@ -65,6 +65,9 @@ When you need to add/update scripts, all you need to do is edit the file located
   - resource template
   - page title service
 
+## Known issues
+- Adding a new script to an empty folder in `public_src/scripts` does not trigger watch. This is a known issue, and for now, requires you to just re-run `grunt`
+
 ## Production Notes
 - You can run mongod in the background permanently with "sudo mongod --fork --logpath /var/log/mongod.log"
   Then to kill it, find his pid with "ps aux | grep mongod" and "kill <pid>" 

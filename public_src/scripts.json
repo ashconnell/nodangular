@@ -9,5 +9,7 @@
     "scripts/app.js",
     "scripts/controllers/Login.js",
     "scripts/controllers/App.js",
-    "scripts/controllers/AppMain.js"
+    "scripts/controllers/AppMain.js",
+    "scripts/controllers/Root.js",
+    "scripts/services/Utils.js"
 ]
