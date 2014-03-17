@@ -1,5 +1,6 @@
-public_src/*
-public_build/*
+public_src/
+.sass-cache/
+public_build/
 Gruntfile.js
-bower_components/*
-.git/*
+bower_components/
+.git/
