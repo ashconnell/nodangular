@@ -1,3 +1,3 @@
-app.controller('Login', function($scope, Utils){
-    Utils.updateTitle('Login or Signup');
+app.controller('Login', function($scope, Page){
+    Page.setTitle('Login or Signup');
 });

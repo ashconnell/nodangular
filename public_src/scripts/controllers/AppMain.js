@@ -1,3 +1,3 @@
-app.controller('AppMain', function($scope, Utils){
-    Utils.updateTitle('Main');
+app.controller('AppMain', function($scope, Page){
+    Page.setTitle("Main");
 });
