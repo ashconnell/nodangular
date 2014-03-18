@@ -16,6 +16,9 @@ module.exports = function(grunt) {
             },
             scripts: {
                 src: ['public_build/scripts']
+            },
+            images: {
+                src: ['public_build/imgs']
             }
         },
 
@@ -27,6 +30,13 @@ module.exports = function(grunt) {
             views: {
                 files: ['public_src/**/*.jade', 'public_src/scripts.json'],
                 tasks: ['jade'],
+            },
+            images: {
+                files: ['public_src/imgs/**/*'],
+                tasks: ['clean:images', 'copy:images'],
+                options: {
+                    spawn: false
+                }
             },
             scripts: {
                 files: ['public_src/**/*.js'],
@@ -85,6 +95,14 @@ module.exports = function(grunt) {
                     src: '**/*.js',
                     dest: 'public_build/scripts'
                 }]
+            },
+            images: {
+                files: [{
+                    expand: true,
+                    cwd: 'public_src/imgs',
+                    src: '**/*',
+                    dest: 'public_build/imgs'
+                }]
             }
         },
 
@@ -111,7 +129,7 @@ module.exports = function(grunt) {
 
     var tasks;
     if(production) 
-        tasks = ['clean:all', 'sass', 'jade', 'uglify'];
+        tasks = ['clean:all', 'sass', 'jade', 'copy:images', 'uglify'];
     else
         tasks = ['clean:all', 'sass', 'jade', 'copy', 'watch']; 
 
